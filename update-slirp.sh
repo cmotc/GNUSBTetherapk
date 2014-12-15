@@ -13,11 +13,13 @@ rm slirp.tar.gz
 export NDK="$HOME/.bin/android-ndk-r10d"
 export NDK_TOOLCHAIN=${NDK}/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-
 export NDK_SYSROOT=${NDK}/platforms/android-9/arch-arm
-export WORK=pwd
 cd jni/slirp/src 
 export CROSS_COMPILE=${NDK_TOOLCHAIN}gcc 
 export CPPFLAGS=-I${NDK_SYSROOT}/usr/include
-./configure #CROSS_COMPILE=${NDK_TOOLCHAIN}gcc CPPFLAGS=-I${NDK_SYSROOT}/usr/include
-#make CC="$HOME/.bin/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc" CFLAGS=--sysroot="$HOME/.bin/android-ndk-r10d/platforms/android-9/arch-arm" #PPPCFLAGS=--sysroot="$HOME/.bin/android-ndk-r10d/platforms/android-9/arch-arm"
-make #CPPFLAGS=-I${WORK} #CC=${NDK_TOOLCHAIN}gcc CFLAGS=--sysroot=${NDK_SYSROOT} PPPCFLAGS=--sysroot=${NDK_SYSROOT}
+export CFLAGS=${NDK_TOOLCHAIN}gcc 
+export CPPFLAGS=-I${NDK_SYSROOT}/usr/include
+export LDFLAGS=-L${NDK_SYSROOT}/usr/lib
+./configure 
+echo $LDFLAGS
+make #CPPFLAGS=-I${NDK_SYSROOT}/usr/include #CC=${NDK_TOOLCHAIN}gcc CFLAGS=--sysroot=${NDK_SYSROOT} PPPCFLAGS=--sysroot=${NDK_SYSROOT}
 echo ${WORK}
