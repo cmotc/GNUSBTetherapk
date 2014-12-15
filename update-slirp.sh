@@ -1,6 +1,7 @@
 #! /bin/sh
 rm -rf jni/bakslirp
-mv jni/slirp jni/bakslirp && rm -rf jni/slirp
+mv -f jni/slirp jni/bakslirp && rm -rf jni/slirp
+mv -f jni/bakslirp/.git jni/slirp/.git
 rm -rf jni/bakslirp/docs/ jni/bakslirp/src
 wget http://ftp.de.debian.org/debian/pool/main/s/slirp/slirp_1.0.17.orig.tar.gz -O slirp.tar.gz && tar -zxvf slirp.tar.gz -C jni/
 cd jni && mv slirp-* slirp && cd ../
