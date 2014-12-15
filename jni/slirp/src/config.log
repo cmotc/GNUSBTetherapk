@@ -1,0 +1,230 @@
+This file contains any messages produced by compilers while
+running configure, to aid debugging if configure makes a mistake.
+
+configure:532: checking version
+configure:550: checking for gcc
+configure:663: checking whether the C compiler (gcc  ) works
+configure:679: gcc -o conftest    conftest.c  1>&5
+configure:705: checking whether the C compiler (gcc  ) is a cross-compiler
+configure:710: checking whether we are using GNU C
+configure:719: gcc -E conftest.c
+configure:738: checking whether gcc accepts -g
+configure:770: checking how to run the C preprocessor
+configure:791: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:860: checking whether gcc needs -traditional
+configure:911: checking for perl
+configure:948: checking whether perl is version 5 or greater
+configure:974: checking whether you are compiling on NeXT
+configure:997: gcc -o conftest -g -O2   conftest.c  1>&5
+configure:1018: checking whether sprintf returns int
+configure:1044: gcc -o conftest -g -O2   conftest.c  1>&5
+configure: In function 'main':
+configure:1038:2: warning: incompatible implicit declaration of built-in function 'exit'
+  exit(1);
+  ^
+configure: failed program was:
+#line 1030 "configure"
+#include "confdefs.h"
+
+#include <stdio.h>
+int main () {
+char buff[1];
+int ret;
+ret = (int)sprintf(buff,"");
+if (ret == 0)
+	exit(1);
+else
+	exit(0);
+}
+configure:1066: checking whether sprintf/fprintf need to be declared
+configure:1091: gcc -o conftest -g -O2   conftest.c  1>&5
+configure: In function 'main':
+configure:1087:2: warning: incompatible implicit declaration of built-in function 'exit'
+  exit(0);
+  ^
+configure:1113: checking whether gettimeofday takes two arguments
+configure:1129: gcc -c -g -O2  conftest.c 1>&5
+configure:1149: checking for 8-bit clean memcmp
+configure:1167: gcc -o conftest -g -O2   conftest.c  1>&5
+configure: In function 'main':
+configure:1162:3: warning: incompatible implicit declaration of built-in function 'exit'
+   exit(memcmp(&c0, &c2, 1) < 0 && memcmp(&c1, &c2, 1) < 0 ? 0 : 1);
+   ^
+configure:1186: checking for main in -lnsl
+configure:1201: gcc -o conftest -g -O2   conftest.c -lnsl   1>&5
+configure:1229: checking for main in -lsocket
+configure:1244: gcc -o conftest -g -O2   conftest.c -lsocket  -lnsl  1>&5
+/usr/bin/ld: cannot find -lsocket
+collect2: error: ld returned 1 exit status
+configure: failed program was:
+#line 1237 "configure"
+#include "confdefs.h"
+
+int main() {
+main()
+; return 0; }
+configure:1272: checking for main in -lposix
+configure:1287: gcc -o conftest -g -O2   conftest.c -lposix  -lnsl  1>&5
+/usr/bin/ld: cannot find -lposix
+collect2: error: ld returned 1 exit status
+configure: failed program was:
+#line 1280 "configure"
+#include "confdefs.h"
+
+int main() {
+main()
+; return 0; }
+configure:1315: checking for main in -lcrypt
+configure:1330: gcc -o conftest -g -O2   conftest.c -lcrypt  -lnsl  1>&5
+configure:1359: checking for unix-domain sockets
+configure:1385: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure: In function 'main':
+configure:1379:3: warning: incompatible implicit declaration of built-in function 'exit'
+   exit(1);
+   ^
+configure:1407: checking whether time.h and sys/time.h may both be included
+configure:1421: gcc -c -g -O2  conftest.c 1>&5
+configure:1442: checking for sys/wait.h that is POSIX.1 compatible
+configure:1463: gcc -c -g -O2  conftest.c 1>&5
+configure:1487: checking for sys/ioctl.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for unistd.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for stdlib.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for sys/filio.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1493:23: fatal error: sys/filio.h: No such file or directory
+ #include <$ac_hdr>
+                       ^
+compilation terminated.
+configure: failed program was:
+#line 1492 "configure"
+#include "confdefs.h"
+#include <sys/filio.h>
+configure:1487: checking for sys/select.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for string.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for sys/signal.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for sys/bitypes.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for termios.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for sys/stropts.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1487: checking for sys/types32.h
+configure:1497: gcc -E  conftest.c >/dev/null 2>conftest.out
+configure:1493:25: fatal error: sys/types32.h: No such file or directory
+ #include <$ac_hdr>
+                         ^
+compilation terminated.
+configure: failed program was:
+#line 1492 "configure"
+#include "confdefs.h"
+#include <sys/types32.h>
+configure:1524: checking whether byte ordering is bigendian
+configure:1542: gcc -c -g -O2  conftest.c 1>&5
+configure:1557: gcc -c -g -O2  conftest.c 1>&5
+configure: In function 'main':
+configure:1552:2: error: unknown type name 'not'
+  not big endian
+  ^
+configure:1552:10: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'endian'
+  not big endian
+          ^
+configure: failed program was:
+#line 1546 "configure"
+#include "confdefs.h"
+#include <sys/types.h>
+#include <sys/param.h>
+int main() {
+
+#if BYTE_ORDER != BIG_ENDIAN
+ not big endian
+#endif
+; return 0; }
+configure:1615: checking for working const
+configure:1669: gcc -c -g -O2  conftest.c 1>&5
+configure:1690: checking for inline
+configure:1704: gcc -c -g -O2  conftest.c 1>&5
+configure:1730: checking whether u_int32_t etc. need to be typedef'd
+configure:1751: gcc -c -g -O2  conftest.c 1>&5
+configure:1892: checking size of char *
+configure:1911: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure: In function 'main':
+configure:1905:11: warning: incompatible implicit declaration of built-in function 'exit'
+   if (!f) exit(1);
+           ^
+configure:1934: checking for strdup
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1946:6: warning: conflicting types for built-in function 'strdup'
+ char $ac_func();
+      ^
+configure:1934: checking for strerror
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for random
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for srandom
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for index
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1946:6: warning: conflicting types for built-in function 'index'
+ char $ac_func();
+      ^
+configure:1934: checking for bcmp
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1946:6: warning: conflicting types for built-in function 'bcmp'
+ char $ac_func();
+      ^
+configure:1934: checking for drand48
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for memmove
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1946:6: warning: conflicting types for built-in function 'memmove'
+ char $ac_func();
+      ^
+configure:1934: checking for setenv
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for inet_aton
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for revoke
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure: In function 'main':
+configure:1954:1: error: unknown type name 'choke'
+ choke me
+ ^
+configure: failed program was:
+#line 1939 "configure"
+#include "confdefs.h"
+/* System header to define __stub macros and hopefully few prototypes,
+    which can conflict with char revoke(); below.  */
+#include <assert.h>
+/* Override any gcc2 internal prototype to avoid an error.  */
+/* We use char because int might match the return type of a gcc2
+    builtin and then its argument prototype would still apply.  */
+char revoke();
+
+int main() {
+
+/* The GNU C library defines this for functions which it implements
+    to always fail with ENOSYS.  Some functions are actually named
+    something starting with __ and the normal name is an alias.  */
+#if defined (__stub_revoke) || defined (__stub___revoke)
+choke me
+#else
+revoke();
+#endif
+
+; return 0; }
+configure:1934: checking for grantpt
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1934: checking for fchmod
+configure:1962: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:1989: checking for strtoul
+configure:2017: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:2044: checking for readv
+configure:2072: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5
+configure:2138: checking for gethostid
+configure:2158: gcc -o conftest -g -O2   conftest.c -lcrypt -lnsl  1>&5

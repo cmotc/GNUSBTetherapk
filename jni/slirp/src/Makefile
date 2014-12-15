@@ -1,3 +1,4 @@
+# Generated automatically from Makefile.in by configure.
 
 #
 # Makefile for GNU Autoconf
