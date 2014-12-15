@@ -1,9 +1,10 @@
 #! /bin/sh
 rm -rf jni/slirp/docs/ jni/slirp/src && rm jni/* && mkdir -p jni/
-mv jni/slirp jni/bakslirp && mv -f jni/bakslirp/.git jni/slirp/.git && rm -rf jni/bakslirp
-cd jni/slirp && git checkout debian && git add . && git commit -am "auto-update" && git push origin debian && cd ../..
+mv jni/slirp jni/bakslirp && rm -rf jni/slirp
 wget http://ftp.de.debian.org/debian/pool/main/s/slirp/slirp_1.0.17.orig.tar.gz -O slirp.tar.gz && tar -zxvf slirp.tar.gz -C jni/
 cd jni && mv slirp-* slirp && cd ../
+cd jni/slirp && git checkout debian && git add . && git commit -am "auto-update" && git push origin debian && cd ../..
+mv -f jni/bakslirp/.git jni/slirp/.git && rm -rf jni/bakslirp
 pwd
 rm slirp.tar.gz
 export NDK="$HOME/.bin/android-ndk-r10d"
