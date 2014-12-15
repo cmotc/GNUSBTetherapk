@@ -1,2 +1,0 @@
-#define SLIRP_VERSION "1.0.17"
-#define SLIRP_STATUS "BETA"
