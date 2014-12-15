@@ -19,5 +19,5 @@ export CROSS_COMPILE=${NDK_TOOLCHAIN}gcc
 export CPPFLAGS=-I${NDK_SYSROOT}/usr/include
 ./configure #CROSS_COMPILE=${NDK_TOOLCHAIN}gcc CPPFLAGS=-I${NDK_SYSROOT}/usr/include
 #make CC="$HOME/.bin/android-ndk-r10d/toolchains/arm-linux-androideabi-4.6/prebuilt/linux-x86_64/bin/arm-linux-androideabi-gcc" CFLAGS=--sysroot="$HOME/.bin/android-ndk-r10d/platforms/android-9/arch-arm" #PPPCFLAGS=--sysroot="$HOME/.bin/android-ndk-r10d/platforms/android-9/arch-arm"
-make CPPFLAGS=-I${WORK} #CC=${NDK_TOOLCHAIN}gcc CFLAGS=--sysroot=${NDK_SYSROOT} PPPCFLAGS=--sysroot=${NDK_SYSROOT}
+make #CPPFLAGS=-I${WORK} #CC=${NDK_TOOLCHAIN}gcc CFLAGS=--sysroot=${NDK_SYSROOT} PPPCFLAGS=--sysroot=${NDK_SYSROOT}
 echo ${WORK}
