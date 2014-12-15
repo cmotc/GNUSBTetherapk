@@ -1,0 +1,204 @@
+slirp-1.0.17/
+slirp-1.0.17/CONTRIB
+slirp-1.0.17/COPYRIGHT
+slirp-1.0.17/ChangeLog
+slirp-1.0.17/README
+slirp-1.0.17/README.NEXT
+slirp-1.0.17/TODO
+slirp-1.0.17/TODO.old
+slirp-1.0.17/cygwin.patch
+slirp-1.0.17/docs/
+slirp-1.0.17/docs/CONFIG
+slirp-1.0.17/docs/alt.dcom.slip-emulators.FAQ
+slirp-1.0.17/docs/slirp.doc
+slirp-1.0.17/security.patch
+slirp-1.0.17/slirp-1.0.16.lsm
+slirp-1.0.17/src/
+slirp-1.0.17/src/Makefile.in
+slirp-1.0.17/src/cksum.c
+slirp-1.0.17/src/cksum.p
+slirp-1.0.17/src/config.h.in
+slirp-1.0.17/src/configure
+slirp-1.0.17/src/configure.in
+slirp-1.0.17/src/ctl.h
+slirp-1.0.17/src/debug.c
+slirp-1.0.17/src/debug.h
+slirp-1.0.17/src/debug.p
+slirp-1.0.17/src/icmp_var.h
+slirp-1.0.17/src/if.c
+slirp-1.0.17/src/if.h
+slirp-1.0.17/src/if.p
+slirp-1.0.17/src/ip.h
+slirp-1.0.17/src/ip_icmp.c
+slirp-1.0.17/src/ip_icmp.h
+slirp-1.0.17/src/ip_icmp.p
+slirp-1.0.17/src/ip_input.c
+slirp-1.0.17/src/ip_input.p
+slirp-1.0.17/src/ip_output.c
+slirp-1.0.17/src/ip_output.p
+slirp-1.0.17/src/main.c
+slirp-1.0.17/src/main.h
+slirp-1.0.17/src/main.p
+slirp-1.0.17/src/mbuf.c
+slirp-1.0.17/src/mbuf.h
+slirp-1.0.17/src/mbuf.p
+slirp-1.0.17/src/memcmp.c
+slirp-1.0.17/src/misc.c
+slirp-1.0.17/src/misc.h
+slirp-1.0.17/src/misc.p
+slirp-1.0.17/src/mkpro
+slirp-1.0.17/src/options.c
+slirp-1.0.17/src/options.h
+slirp-1.0.17/src/options.p
+slirp-1.0.17/src/ppp/
+slirp-1.0.17/src/ppp/auth.c
+slirp-1.0.17/src/ppp/bsd-comp.c
+slirp-1.0.17/src/ppp/bsd-comp.h
+slirp-1.0.17/src/ppp/ccp.c
+slirp-1.0.17/src/ppp/ccp.h
+slirp-1.0.17/src/ppp/chap.c
+slirp-1.0.17/src/ppp/chap.h
+slirp-1.0.17/src/ppp/fsm.c
+slirp-1.0.17/src/ppp/fsm.h
+slirp-1.0.17/src/ppp/ipcp.c
+slirp-1.0.17/src/ppp/ipcp.h
+slirp-1.0.17/src/ppp/lcp.c
+slirp-1.0.17/src/ppp/lcp.h
+slirp-1.0.17/src/ppp/magic.c
+slirp-1.0.17/src/ppp/magic.h
+slirp-1.0.17/src/ppp/md5.c
+slirp-1.0.17/src/ppp/md5.h
+slirp-1.0.17/src/ppp/options.h
+slirp-1.0.17/src/ppp/patchlevel.h
+slirp-1.0.17/src/ppp/pathnames.h
+slirp-1.0.17/src/ppp/ppp-comp.h
+slirp-1.0.17/src/ppp/ppp.h
+slirp-1.0.17/src/ppp/ppp_defs.h
+slirp-1.0.17/src/ppp/pppd.h
+slirp-1.0.17/src/ppp/pppdfncs.c
+slirp-1.0.17/src/ppp/slirppp.h
+slirp-1.0.17/src/ppp/upap.c
+slirp-1.0.17/src/ppp/upap.h
+slirp-1.0.17/src/ppp.c
+slirp-1.0.17/src/ppp.p
+slirp-1.0.17/src/sbuf.c
+slirp-1.0.17/src/sbuf.h
+slirp-1.0.17/src/sbuf.p
+slirp-1.0.17/src/sl.c
+slirp-1.0.17/src/sl.h
+slirp-1.0.17/src/sl.p
+slirp-1.0.17/src/slcompress.c
+slirp-1.0.17/src/slcompress.h
+slirp-1.0.17/src/slcompress.p
+slirp-1.0.17/src/slirp.h
+slirp-1.0.17/src/slirp.man
+slirp-1.0.17/src/slirp_debug
+slirp-1.0.17/src/slirp_stats
+slirp-1.0.17/src/slirptrace.sh
+slirp-1.0.17/src/socket.c
+slirp-1.0.17/src/socket.h
+slirp-1.0.17/src/socket.p
+slirp-1.0.17/src/stacktrace.sh
+slirp-1.0.17/src/strtoul.c
+slirp-1.0.17/src/talkd.h
+slirp-1.0.17/src/tcp.h
+slirp-1.0.17/src/tcp_input.c
+slirp-1.0.17/src/tcp_input.p
+slirp-1.0.17/src/tcp_output.c
+slirp-1.0.17/src/tcp_output.p
+slirp-1.0.17/src/tcp_subr.c
+slirp-1.0.17/src/tcp_subr.p
+slirp-1.0.17/src/tcp_timer.c
+slirp-1.0.17/src/tcp_timer.h
+slirp-1.0.17/src/tcp_timer.p
+slirp-1.0.17/src/tcp_var.h
+slirp-1.0.17/src/tcpip.h
+slirp-1.0.17/src/terminal.c
+slirp-1.0.17/src/terminal.h
+slirp-1.0.17/src/terminal.p
+slirp-1.0.17/src/ttys.c
+slirp-1.0.17/src/ttys.h
+slirp-1.0.17/src/ttys.p
+slirp-1.0.17/src/udp.c
+slirp-1.0.17/src/udp.h
+slirp-1.0.17/src/udp.p
+slirp-1.0.17/src/version.h
+On branch debian
+nothing to commit, working directory clean
+/home/dyngar-m/Projects/PersonalROM-schS738c/GNUSBTetherapk
+creating cache ./config.cache
+Reminder: If you don't want PPP compiled in, run configure with the option --disable-ppp
+checking version... 1.0.17
+checking for gcc... gcc
+checking whether the C compiler (gcc  ) works... yes
+checking whether the C compiler (gcc  ) is a cross-compiler... no
+checking whether we are using GNU C... yes
+checking whether gcc accepts -g... yes
+checking how to run the C preprocessor... gcc -E
+checking whether gcc needs -traditional... no
+checking for perl... /usr/bin/perl
+checking whether perl is version 5 or greater... yes
+checking whether you are compiling on NeXT... no
+checking whether sprintf returns int... yes
+checking whether sprintf/fprintf need to be declared... no
+checking whether gettimeofday takes two arguments... yes
+checking for 8-bit clean memcmp... yes
+checking for main in -lnsl... yes
+checking for main in -lsocket... no
+checking for main in -lposix... no
+checking for main in -lcrypt... yes
+checking for unix-domain sockets... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for sys/ioctl.h... yes
+checking for unistd.h... no
+checking for stdlib.h... no
+checking for sys/filio.h... no
+checking for sys/select.h... no
+checking for string.h... yes
+checking for sys/signal.h... yes
+checking for sys/bitypes.h... yes
+checking for termios.h... no
+checking for sys/stropts.h... yes
+checking for sys/types32.h... no
+checking whether byte ordering is bigendian... no
+checking for working const... yes
+checking for inline... inline
+checking whether u_int32_t etc. need to be typedef'd... no
+checking size of char *... 8
+checking for strdup... yes
+checking for strerror... yes
+checking for random... yes
+checking for srandom... yes
+checking for index... yes
+checking for bcmp... yes
+checking for drand48... yes
+checking for memmove... yes
+checking for setenv... yes
+checking for inet_aton... yes
+checking for revoke... yes
+checking for grantpt... yes
+checking for fchmod... yes
+checking for strtoul... yes
+checking for readv... yes
+checking for gethostid... yes
+updating cache ./config.cache
+creating ./config.status
+creating Makefile
+creating config.h
+gcc -E -I. -I. -DUSE_PPP -DUSE_MS_DNS  -DUSE_PPP -g -O2 debug.c | /usr/bin/perl ./mkpro > debug.p.bak && mv -f debug.p.bak debug.p
+gcc -E -I. -I. -DUSE_PPP -DUSE_MS_DNS  -DUSE_PPP -g -O2 mbuf.c | /usr/bin/perl ./mkpro > mbuf.p.bak && mv -f mbuf.p.bak mbuf.p
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/auth.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/bsd-comp.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/ccp.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/chap.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/fsm.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/ipcp.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/lcp.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/magic.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/md5.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/pppdfncs.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2  -c ./ppp/upap.c
+gcc -I. -I. -DUSE_PPP -DUSE_MS_DNS  -g -O2 -O2 -Wall -Wno-implicit -Wmissing-prototypes -c ./ppp.c
+Makefile:168: recipe for target 'ppp.o' failed
+pwd
