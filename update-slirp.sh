@@ -1,7 +1,9 @@
 #! /bin/sh
 rm -rf jni/slirp/docs/ jni/slirp/src && rm jni/* && mkdir -p jni/
 mv jni/slirp jni/bakslirp && mv -f jni/bakslirp/.git jni/slirp/.git && rm -rf jni/bakslirp
-cd jni/slirp && git add . && git commit -am "auto-update" && git push origin master && ../..
+pwd
+cd jni/slirp && git checkout -b debian && git add . && git commit -am "auto-update" && git push origin debian && ../..
+pwd
 wget http://ftp.de.debian.org/debian/pool/main/s/slirp/slirp_1.0.17.orig.tar.gz -O slirp.tar.gz && tar -zxvf slirp.tar.gz -C jni/
 cd jni && mv slirp-* slirp && cd ../
 rm slirp.tar.gz
