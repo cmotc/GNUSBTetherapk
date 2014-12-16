@@ -1,9 +1,10 @@
 package com.cmotc.gnusbtether;
 import android.app.Activity;
+import android.content.res.AssetManager;
+import android.content.Context;
 import android.os.Bundle;
-import android.content.res.AssetManager;
+import android.os.Environment;
 import android.util.Log;
-import android.content.res.AssetManager;
 import android.view.View;
 import android.widget.CheckBox;
 import java.io.IOException;
@@ -46,7 +47,8 @@ public class gnusbtether extends Activity{
 		InputStream in = src;
 		int temp = 0;
 		if(src != null){
-			OutputStream out = new FileOutputStream(dst);
+			FileOutputStream out = openFileOutput(getString(R.string.slirp_dir), Context.MODE_PRIVATE);
+//			openFileOutput();
 			// Transfer bytes from in to out
 			byte[] buf = new byte[1024];
 			int len;
@@ -69,6 +71,10 @@ public class gnusbtether extends Activity{
 	private int installSLiRP(){
 		int temp = 0;
 		testIfSLiRPExists = new File(getString(R.string.slirp_dir));
+		File testIfSLiRPDirExists = new File(getString(R.string.slirp_root));
+		if(!testIfSLiRPDirExists.exists()){
+			testIfSLiRPDirExists.mkdir();
+		}
 		if(!testIfSLiRPExists.exists()){
 			try{
 				temp = copy(getSLiRPAsset(),testIfSLiRPExists);
@@ -138,9 +144,9 @@ public class gnusbtether extends Activity{
 	cleanup whatever you can and exit.
 	*/
 	private int checkKill(int err){
-		if(err<0){
-			removeSLiRP();
-		}
+//		if(err<0){
+//			removeSLiRP();
+//		}
 		return err;
 	}
 	/**Handle the checkbox event
