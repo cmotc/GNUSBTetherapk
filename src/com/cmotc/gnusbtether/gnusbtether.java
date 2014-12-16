@@ -96,12 +96,6 @@ public class gnusbtether extends Activity{
 				temp = 1;
 			}
 		}
-		File defaultSLiRPFile = new File("/data/local/bin/slirp");
-		if(defaultSLiRPFile.exists()){
-			if(defaultSLiRPFile.delete()){
-				temp = temp + 1;
-			}
-		}
 		return temp;
 	}
 	/**This starts SLiRP and listens for a connection
@@ -113,13 +107,7 @@ public class gnusbtether extends Activity{
 			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
 				getString(R.string.sppp),
 				getString(R.string.smtu),
-				getString(R.string.snum)
-				/*getString(R.string.snod),
-				getString(R.string.snoi),
-				getString(R.string.sdef),
-				getString(R.string.suse),
-				getString(R.string.snot),
-				getString(R.string.sadd)*/);
+				getString(R.string.snum));
 			File dir = new File(getString(R.string.slirp_root));
 			sLiRPProcess.directory(dir);
 			try{
