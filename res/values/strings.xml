@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">gnusbtether</string>
     <string name="slirp_dir">"data/local/bin/slirp"</string>
-    <string name="slirp_root">"data/local/bin/"</string>
+    <string name="slirp_root">"data/local/bin"</string>
     <string name="slirp_there">false</string>
     <string name="sppp">ppp</string>
     <string name="smtu">mtu</string>
