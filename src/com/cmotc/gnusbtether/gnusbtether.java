@@ -110,12 +110,12 @@ public class gnusbtether extends Activity
 				getString(R.string.sppp),
 				getString(R.string.smtu),
 				getString(R.string.snum),
-				getString(R.string.snod),
+				/*getString(R.string.snod),
 				getString(R.string.snoi),
 				getString(R.string.sdef),
 				getString(R.string.suse),
 				getString(R.string.snot),
-				getString(R.string.sadd));
+				getString(R.string.sadd)*/);
 			try{
 				Process sLiRPNative = sLiRPProcess.start();
 			}catch(IOException e){
