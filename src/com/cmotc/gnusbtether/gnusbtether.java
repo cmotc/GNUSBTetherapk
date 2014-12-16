@@ -15,16 +15,18 @@ import java.io.FileInputStream;
 public class gnusbtether extends Activity
 {
 	private File testIfSLiRPExists;
-	/** Called when the activity is first created. */
+	/** Called when the activity is first created. 
+	*/
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		installSLiRP();
 	}
 	/**Returns the SLiRP Program in the assets as an InputStream to be 
 	copied to /data/local/bin/
 	*/
-	public InputStream getSLiRPAsset(){
+	private InputStream getSLiRPAsset(){
 		InputStream temp = null; //= ;
 		AssetManager assetManager = getAssets();
 		try{
@@ -100,10 +102,6 @@ public class gnusbtether extends Activity
 	/**This stops SLiRP and reloads firewall settings
 	*/
 	private int stopSLiRP(){
-		int temp = 0;
-		return temp;
-	}	
-	private int SLIRP(){
 		int temp = 0;
 		return temp;
 	}
