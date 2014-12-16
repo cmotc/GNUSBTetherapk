@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">gnusbtether</string>
+    <string name="slirp_dir">"data/local/bin/slirp"</string>
+    <string name="slirp_root">"data/local/bin"</string>
+    <string name="slirp_there">false</string>
+    <string name="sppp">ppp</string>
+    <string name="smtu">mtu</string>
+    <string name="snum">1500</string>
+    <string name="snod">nodetach</string>
+    <string name="snoa">noauth</string>
+    <string name="snoi">noipdefault</string>
+    <string name="sdef">defaultroute</string>
+    <string name="suse">usepeerdns</string>
+    <string name="snot">notty</string>
+    <string name="sadd">10.0.2.15:10.64.64.64</string>
 </resources>
