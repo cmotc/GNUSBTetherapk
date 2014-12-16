@@ -17,6 +17,7 @@ public class gnusbtether extends Activity
 {
 	private File testIfSLiRPExists;
 	private ProcessBuilder sLiRPProcess;
+	private	Process sLiRPNative;
 	/** Called when the activity is first created. 
 	*/
 	@Override
@@ -116,10 +117,10 @@ public class gnusbtether extends Activity
 				getString(R.string.suse),
 				getString(R.string.snot),
 				getString(R.string.sadd)*/);
-			File dir = new File(R.string.slirp_root);
+			File dir = new File(getString(R.string.slirp_root));
 			sLiRPProcess.directory(dir);
 			try{
-				Process sLiRPNative = sLiRPProcess.start();
+				sLiRPNative = sLiRPProcess.start();
 			}catch(IOException e){
 				temp = -2;
 				Log.e("tag", e.getMessage());			
@@ -133,9 +134,9 @@ public class gnusbtether extends Activity
 	*/
 	private int stopSLiRP(){
 		int temp = 0;
-/*		if(){
-			sLiRPProcess.
-		}
-*/		return temp;
+//		if(){
+			sLiRPNative.destroy();
+//		}
+		return temp;
 	}
 }
