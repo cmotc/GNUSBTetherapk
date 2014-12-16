@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.content.res.AssetManager;
 import android.util.Log;
 import android.content.res.AssetManager;
+import android.view.View;
+import android.widget.CheckBox;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
@@ -138,5 +140,8 @@ public class gnusbtether extends Activity
 			sLiRPNative.destroy();
 //		}
 		return temp;
+	}
+	public void onToggleCheckBox(View view){
+		boolean on = ((CheckBox) view).isChecked();
 	}
 }
