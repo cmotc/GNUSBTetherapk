@@ -1,5 +1,4 @@
 package com.cmotc.gnusbtether;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.res.AssetManager;
@@ -15,8 +14,7 @@ import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.FilePermission;
 
-public class gnusbtether extends Activity
-{
+public class gnusbtether extends Activity{
 	private File testIfSLiRPExists;
 	private ProcessBuilder sLiRPProcess;
 	private	Process sLiRPNative;
@@ -26,10 +24,7 @@ public class gnusbtether extends Activity
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		int err = installSLiRP();
-		if(err < 0){
-			removeSLiRP();
-		}
+		int err = checkKill(installSLiRP());
 	}
 	/**Returns the SLiRP Program in the assets as an InputStream to be 
 	copied to /data/local/bin/
@@ -135,13 +130,28 @@ public class gnusbtether extends Activity
 	/**This stops SLiRP and ?reloads firewall settings
 	*/
 	private int stopSLiRP(){
-		int temp = 0;
-//		if(){
-			sLiRPNative.destroy();
-//		}
+		sLiRPNative.destroy();
+		int temp = sLiRPNative.exitValue();
 		return temp;
 	}
+	/**whenever a function returns less than zero, a failure has occurred.
+	cleanup whatever you can and exit.
+	*/
+	private int checkKill(int err){
+		if(err<0){
+			removeSLiRP();
+		}
+		return err;
+	}
+	/**Handle the checkbox event
+	*/
 	public void onToggleCheckBox(View view){
+		((CheckBox) view).toggle();
 		boolean on = ((CheckBox) view).isChecked();
+		if(on){
+			checkKill(startSLiRP());
+		}else{
+			checkKill(stopSLiRP());
+		}
 	}
 }
