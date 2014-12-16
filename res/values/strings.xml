@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">gnusbtether</string>
-    <string name="slirp_dir">"data/local/bin"</string>
+    <string name="slirp_dir">"data/local/bin/slirp"</string>
+    <string name="slirp_root">"data/local/bin/"</string>
     <string name="slirp_there">false</string>
 </resources>

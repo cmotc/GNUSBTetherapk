@@ -11,17 +11,22 @@ import java.io.InputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileInputStream;
+import java.io.FilePermission;
 
 public class gnusbtether extends Activity
 {
 	private File testIfSLiRPExists;
+	private ProcessBuilder sLiRPProcess;
 	/** Called when the activity is first created. 
 	*/
 	@Override
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		installSLiRP();
+		int err = installSLiRP();
+		if(err < 0){
+			removeSLiRP();
+		}
 	}
 	/**Returns the SLiRP Program in the assets as an InputStream to be 
 	copied to /data/local/bin/
@@ -42,7 +47,7 @@ public class gnusbtether extends Activity
 	private int copy(InputStream src, File dst) throws IOException {
 		InputStream in = src;
 		int temp = 0;
-		if(src!=null){
+		if(src != null){
 			OutputStream out = new FileOutputStream(dst);
 			// Transfer bytes from in to out
 			byte[] buf = new byte[1024];
@@ -52,6 +57,8 @@ public class gnusbtether extends Activity
 			}
 			in.close();
 			out.close();
+			File SLiRP = new File(getString(R.string.slirp_dir));
+			SLiRP.setExecutable(true);
 			temp = 1;
 		}else{
 			temp = -1;
@@ -96,13 +103,27 @@ public class gnusbtether extends Activity
 	/**This starts SLiRP and listens for a connection
 	*/
 	private int startSLiRP(){
-		int temp = 0;
+		int temp = installSLiRP();
+		if( temp >= 0){
+			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),"");
+			try{
+				Process sLiRPNative = sLiRPProcess.start();
+			}catch(IOException e){
+				temp = -2;
+				Log.e("tag", e.getMessage());			
+			}
+		}else{
+			temp = -1;
+		}
 		return temp;
 	}
 	/**This stops SLiRP and reloads firewall settings
 	*/
 	private int stopSLiRP(){
 		int temp = 0;
-		return temp;
+/*		if(){
+			sLiRPProcess.
+		}
+*/		return temp;
 	}
 }
