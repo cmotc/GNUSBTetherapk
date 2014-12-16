@@ -15,8 +15,18 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f030000;
+        public static final int sadd=0x7f03000d;
+        public static final int sdef=0x7f03000a;
         public static final int slirp_dir=0x7f030001;
         public static final int slirp_root=0x7f030002;
         public static final int slirp_there=0x7f030003;
+        public static final int smtu=0x7f030005;
+        public static final int snoa=0x7f030008;
+        public static final int snod=0x7f030007;
+        public static final int snoi=0x7f030009;
+        public static final int snot=0x7f03000c;
+        public static final int snum=0x7f030006;
+        public static final int sppp=0x7f030004;
+        public static final int suse=0x7f03000b;
     }
 }

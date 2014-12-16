@@ -105,7 +105,17 @@ public class gnusbtether extends Activity
 	private int startSLiRP(){
 		int temp = installSLiRP();
 		if( temp >= 0){
-			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),"");
+			///ppp mtu 1500 nodetach noauth noipdefault defaultroute usepeerdns notty 10.0.2.15:10.64.64.64
+			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
+				getString(R.string.sppp),
+				getString(R.string.smtu),
+				getString(R.string.snum),
+				getString(R.string.snod),
+				getString(R.string.snoi),
+				getString(R.string.sdef),
+				getString(R.string.suse),
+				getString(R.string.snot),
+				getString(R.string.sadd));
 			try{
 				Process sLiRPNative = sLiRPProcess.start();
 			}catch(IOException e){
@@ -117,7 +127,7 @@ public class gnusbtether extends Activity
 		}
 		return temp;
 	}
-	/**This stops SLiRP and reloads firewall settings
+	/**This stops SLiRP and ?reloads firewall settings
 	*/
 	private int stopSLiRP(){
 		int temp = 0;
