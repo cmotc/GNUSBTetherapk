@@ -16,7 +16,7 @@ import java.io.FileInputStream;
 import java.io.FilePermission;
 
 public class gnusbtether extends Activity{
-	private File testIfSLiRPExists;
+	private FileOutputStream sLiRPLocation;
 	private ProcessBuilder sLiRPProcess;
 	private	Process sLiRPNative;
 	/** Called when the activity is first created. 
@@ -25,30 +25,43 @@ public class gnusbtether extends Activity{
 	public void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		int err = checkKill(installSLiRP());
+		installSLiRP();
 	}
 	/**Returns the SLiRP Program in the assets as an InputStream to be 
 	copied to /data/local/bin/
 	*/
 	private InputStream getSLiRPAsset(){
-		InputStream temp = null; //= ;
-		AssetManager assetManager = getAssets();
+		InputStream temp = getResources().openRawResource(R.raw.slirp); 
+		return temp;
+	}
+	/**Checks if SLiRP is installed(in the data folder), if it is installed 
+	the function returns 0, if it needed to be installed it returns 1, and 
+	if it can't be installed it returns -1
+	*/
+	private int installSLiRP(){
+		int temp = 0;
 		try{
-			temp = assetManager.open("slirp");
-		}catch (IOException e) {
+			sLiRPLocation = openFileOutput(getString(R.string.slirp_dir), Context.MODE_PRIVATE);
+		}catch(IOException e){
 			Log.e("tag", e.getMessage());
+			temp = -2;
+		}
+		try{
+			temp = copy(getSLiRPAsset(),sLiRPLocation);
+		}catch(IOException e){
+			Log.e("tag", e.getMessage());
+			temp = -1;
 		}
 		return temp;
 	}
 	/**Copies the InputStream provided by the asset to the File descriptor by
 	path
 	*/
-	private int copy(InputStream src, File dst) throws IOException {
+	private int copy(InputStream src, OutputStream dst) throws IOException {
 		InputStream in = src;
 		int temp = 0;
 		if(src != null){
 			FileOutputStream out = openFileOutput(getString(R.string.slirp_dir), Context.MODE_PRIVATE);
-//			openFileOutput();
 			// Transfer bytes from in to out
 			byte[] buf = new byte[1024];
 			int len;
@@ -57,44 +70,11 @@ public class gnusbtether extends Activity{
 			}
 			in.close();
 			out.close();
-			File SLiRP = new File(getString(R.string.slirp_dir));
-			SLiRP.setExecutable(true);
+//			File SLiRP = new File(getString(R.string.slirp_dir));
+//			SLiRP.setExecutable(true);
 			temp = 1;
 		}else{
 			temp = -1;
-		}
-		return temp;
-	}
-	/**Checks if SLiRP is installed, if it is installed the function returns 
-	0, if it needed to be installed it returns 1, and if it can't be 
-	installed it returns -1*/
-	private int installSLiRP(){
-		int temp = 0;
-		testIfSLiRPExists = new File(getString(R.string.slirp_dir));
-		File testIfSLiRPDirExists = new File(getString(R.string.slirp_root));
-		if(!testIfSLiRPDirExists.exists()){
-			testIfSLiRPDirExists.mkdir();
-		}
-		if(!testIfSLiRPExists.exists()){
-			try{
-				temp = copy(getSLiRPAsset(),testIfSLiRPExists);
-			}catch(IOException e){
-				Log.e("tag", e.getMessage());
-				temp = -1;
-			}
-		}
-		return temp;
-	}
-	/**This removes SLiRP from the /data/local/bin folder and from any 
-	custom folder the user may have specified*/
-	private int removeSLiRP(){
-		int temp = 0;
-		if(!testIfSLiRPExists.delete()){
-			if(testIfSLiRPExists.exists()){
-				temp = -2;
-			}else{
-				temp = 1;
-			}
 		}
 		return temp;
 	}
@@ -103,11 +83,8 @@ public class gnusbtether extends Activity{
 	private int startSLiRP(){
 		int temp = installSLiRP();
 		if( temp >= 0){
-			///ppp mtu 1500 nodetach noauth noipdefault defaultroute usepeerdns notty 10.0.2.15:10.64.64.64
 			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
-				getString(R.string.sppp),
-				getString(R.string.smtu),
-				getString(R.string.snum));
+				getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
 			File dir = new File(getString(R.string.slirp_root));
 			sLiRPProcess.directory(dir);
 			try{
@@ -131,21 +108,15 @@ public class gnusbtether extends Activity{
 	/**whenever a function returns less than zero, a failure has occurred.
 	cleanup whatever you can and exit.
 	*/
-	private int checkKill(int err){
-//		if(err<0){
-//			removeSLiRP();
-//		}
-		return err;
-	}
 	/**Handle the checkbox event
 	*/
 	public void onToggleCheckBox(View view){
 		((CheckBox) view).toggle();
 		boolean on = ((CheckBox) view).isChecked();
 		if(on){
-			checkKill(startSLiRP());
+			startSLiRP();
 		}else{
-			checkKill(stopSLiRP());
+			stopSLiRP();
 		}
 	}
 }

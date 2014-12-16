@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">gnusbtether</string>
-    <string name="slirp_dir">bin/slirp</string>
-    <string name="slirp_root">bin</string>
+    <string name="slirp_dir">file/slirp</string>
+    <string name="slirp_root">file</string>
     <string name="slirp_there">false</string>
     <string name="sppp">ppp</string>
     <string name="smtu">mtu</string>
