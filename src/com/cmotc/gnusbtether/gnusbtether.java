@@ -118,7 +118,7 @@ public class gnusbtether extends Activity{
 		int temp = 0;
 		installSLiRP();
 		try{
-			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_exe),
+			sLiRPProcess = new ProcessBuilder(getFilesDir()+getString(R.string.slirp_exe),
 				getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
 				File dir = new File(getString(R.string.slirp_root));
 				sLiRPProcess.directory(dir);
