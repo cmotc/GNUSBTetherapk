@@ -7,6 +7,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.InputStream;
@@ -16,7 +18,7 @@ import java.io.FileInputStream;
 import java.io.FilePermission;
 
 public class gnusbtether extends Activity{
-	private FileOutputStream sLiRPLocation;
+	private OutputStream sLiRPLocation;
 	private ProcessBuilder sLiRPProcess;
 	private	Process sLiRPNative;
 	/** Called when the activity is first created. 
@@ -58,18 +60,32 @@ public class gnusbtether extends Activity{
 	path
 	*/
 	private int copy(InputStream src, OutputStream dst) throws IOException {
-		InputStream in = src;
+		final int size = 1024 * 2;
+		byte[] buf = new byte[size];
 		int temp = 0;
 		if(src != null){
-			FileOutputStream out = openFileOutput(getString(R.string.slirp_dir), Context.MODE_PRIVATE);
 			// Transfer bytes from in to out
-			byte[] buf = new byte[1024];
-			int len;
-			while ((len = in.read(buf)) > 0) {
-				out.write(buf, 0, len);
+			BufferedInputStream in = new BufferedInputStream(src, size);
+			BufferedOutputStream out = new BufferedOutputStream(dst, size);
+			int count = 0, n = 0;
+			try {
+				while((n = in.read(buf, 0, size)) != -1){
+					out.write(buf, 0, n);
+					count += n;
+				}
+				out.flush();
+			}finally{
+				try{
+					out.close();
+				}catch(IOException e){
+					Log.e("tag", e.getMessage());
+				}
+				try{
+					in.close();
+				}catch(IOException e){
+					Log.e("tag", e.getMessage());
+				}
 			}
-			in.close();
-			out.close();
 //			File SLiRP = new File(getString(R.string.slirp_dir));
 //			SLiRP.setExecutable(true);
 			temp = 1;
@@ -81,20 +97,16 @@ public class gnusbtether extends Activity{
 	/**This starts SLiRP and listens for a connection
 	*/
 	private int startSLiRP(){
-		int temp = installSLiRP();
-		if( temp >= 0){
-			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
-				getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
-			File dir = new File(getString(R.string.slirp_root));
-			sLiRPProcess.directory(dir);
-			try{
-				sLiRPNative = sLiRPProcess.start();
-			}catch(IOException e){
-				temp = -2;
-				Log.e("tag", e.getMessage());			
-			}
-		}else{
+		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
+			getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
+		File dir = new File(getString(R.string.slirp_root));
+		sLiRPProcess.directory(dir);
+		int temp = 0;
+		try{
+			sLiRPNative = sLiRPProcess.start();
+		}catch(IOException e){
 			temp = -1;
+			Log.e("tag", e.getMessage());			
 		}
 		return temp;
 	}
@@ -105,18 +117,15 @@ public class gnusbtether extends Activity{
 		int temp = sLiRPNative.exitValue();
 		return temp;
 	}
-	/**whenever a function returns less than zero, a failure has occurred.
-	cleanup whatever you can and exit.
-	*/
 	/**Handle the checkbox event
 	*/
 	public void onToggleCheckBox(View view){
-		((CheckBox) view).toggle();
-		boolean on = ((CheckBox) view).isChecked();
-		if(on){
-			startSLiRP();
-		}else{
-			stopSLiRP();
-		}
+		//((CheckBox) view).toggle();
+		//boolean on = ((CheckBox) view).isChecked();
+		//if(on){
+		//	startSLiRP();
+		//}else{
+		//	stopSLiRP();
+		//}
 	}
 }
