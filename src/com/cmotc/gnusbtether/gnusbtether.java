@@ -23,6 +23,7 @@ import java.io.FilePermission;
 
 public class gnusbtether extends Activity{
 	private static final int NOTIFICATION_ID = 10200;
+	private CheckBox toggleGNUSBTether;
 	private OutputStream sLiRPLocation;
 	private ProcessBuilder sLiRPProcess;
 	private	Process sLiRPNative;
@@ -140,8 +141,9 @@ public class gnusbtether extends Activity{
 	}
 	/**Handle the checkbox event
 	*/
-	public void onToggleCheckBox(View view){
-		((CheckBox) view).toggle();
+	
+	public void onToggleCheckBox(){
+//		((CheckBox) view).toggle();
 		tethered = ((CheckBox) view).isChecked();
 		if(tethered){
 			startSLiRP();

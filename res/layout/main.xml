@@ -9,6 +9,7 @@
     android:layout_height="wrap_content" 
     android:text="Accept USB Tethering"
     android:onClick="onToggleCheckBox"
+    android:checked="false";
 />
 </LinearLayout>
 
