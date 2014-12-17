@@ -29,13 +29,6 @@ public class gnusbtether extends Activity{
 		setContentView(R.layout.main);
 		installSLiRP();
 	}
-	/**Returns the SLiRP Program in the assets as an InputStream to be 
-	copied to /data/local/bin/
-	*/
-	private InputStream getSLiRPAsset(){
-		InputStream temp = getResources().openRawResource(R.raw.slirp); 
-		return temp;
-	}
 	/**Checks if SLiRP is installed(in the data folder), if it is installed 
 	the function returns 0, if it needed to be installed it returns 1, and 
 	if it can't be installed it returns -1
@@ -49,7 +42,8 @@ public class gnusbtether extends Activity{
 			temp = -2;
 		}
 		try{
-			temp = copy(getSLiRPAsset(),sLiRPLocation);
+			temp = copy(getResources().openRawResource(R.raw.slirp),sLiRPLocation);
+			sLiRPLocation.close();
 		}catch(IOException e){
 			Log.e("tag", e.getMessage());
 			temp = -1;
@@ -60,9 +54,9 @@ public class gnusbtether extends Activity{
 	path
 	*/
 	private int copy(InputStream src, OutputStream dst) throws IOException {
+		int temp = 0;
 		final int size = 1024 * 2;
 		byte[] buf = new byte[size];
-		int temp = 0;
 		if(src != null){
 			// Transfer bytes from in to out
 			BufferedInputStream in = new BufferedInputStream(src, size);
@@ -86,8 +80,8 @@ public class gnusbtether extends Activity{
 					Log.e("tag", e.getMessage());
 				}
 			}
-//			File SLiRP = new File(getString(R.string.slirp_dir));
-//			SLiRP.setExecutable(true);
+			File SLiRP = new File(getString(R.string.slirp_dir));
+			SLiRP.setExecutable(true);
 			temp = 1;
 		}else{
 			temp = -1;
@@ -97,17 +91,18 @@ public class gnusbtether extends Activity{
 	/**This starts SLiRP and listens for a connection
 	*/
 	private int startSLiRP(){
-		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
+		int temp = 0;
+		installSLiRP();
+/*		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
 			getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
 		File dir = new File(getString(R.string.slirp_root));
 		sLiRPProcess.directory(dir);
-		int temp = 0;
 		try{
 			sLiRPNative = sLiRPProcess.start();
 		}catch(IOException e){
 			temp = -1;
 			Log.e("tag", e.getMessage());			
-		}
+		}*/
 		return temp;
 	}
 	/**This stops SLiRP and ?reloads firewall settings
@@ -120,12 +115,12 @@ public class gnusbtether extends Activity{
 	/**Handle the checkbox event
 	*/
 	public void onToggleCheckBox(View view){
-		//((CheckBox) view).toggle();
-		//boolean on = ((CheckBox) view).isChecked();
-		//if(on){
-		//	startSLiRP();
-		//}else{
-		//	stopSLiRP();
-		//}
+		((CheckBox) view).toggle();
+		boolean on = ((CheckBox) view).isChecked();
+		if(on){
+			startSLiRP();
+		}else{
+			stopSLiRP();
+		}
 	}
 }
