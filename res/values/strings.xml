@@ -3,8 +3,6 @@
     <string name="app_name">gnusbtether</string>
     <string name="app_name_pretty">Free USB Tether</string>
     <string name="slirp_dir">slirp_e</string>
-    <string name="slirp_exe">files/slirp_e</string>
-    <string name="slirp_root">files/</string>
     <string name="slirp_there">false</string>
     <string name="tethering">GNUSB Tethering Active</string>
     <string name="not_tethering">GNUSB Tethering Inactive</string>

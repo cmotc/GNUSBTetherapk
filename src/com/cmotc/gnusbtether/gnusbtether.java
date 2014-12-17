@@ -53,6 +53,10 @@ public class gnusbtether extends Activity{
 		notification.icon = tethered ?	R.drawable.tethered : R.drawable.not_tethered;
 		tetheringNotification.notify(NOTIFICATION_ID, notification);
 	}
+	private String dataPath(){
+		String appPath = getFilesDir().getAbsolutePath();
+		return appPath;
+	}
 	/**Checks if SLiRP is installed(in the data folder), if it is installed 
 	the function returns 0, if it needed to be installed it returns 1, and 
 	if it can't be installed it returns -1
@@ -104,7 +108,7 @@ public class gnusbtether extends Activity{
 					Log.e("tag", e.getMessage());
 				}
 			}
-			File SLiRP = new File(getString(R.string.slirp_dir));
+			File SLiRP = new File(dataPath()+getString(R.string.slirp_dir));
 			SLiRP.setExecutable(true);
 			temp = 1;
 		}else{
@@ -118,9 +122,9 @@ public class gnusbtether extends Activity{
 		int temp = 0;
 		installSLiRP();
 		try{
-			sLiRPProcess = new ProcessBuilder(getFilesDir()+getString(R.string.slirp_exe),
+			sLiRPProcess = new ProcessBuilder(dataPath()+getString(R.string.slirp_dir),
 				getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
-				File dir = new File(getString(R.string.slirp_root));
+				File dir = new File(dataPath());
 				sLiRPProcess.directory(dir);
 			sLiRPNative = sLiRPProcess.start();			
 		}catch(IOException e){
@@ -133,8 +137,8 @@ public class gnusbtether extends Activity{
 	/**This stops SLiRP and ?reloads firewall settings
 	*/
 	private int stopSLiRP(){
-		sLiRPNative.destroy();
-		int temp = sLiRPNative.exitValue();
+//		sLiRPNative.destroy();
+//		int temp = sLiRPNative.exitValue();
 		notifyIfTethered();
 		return 0;
 	}
