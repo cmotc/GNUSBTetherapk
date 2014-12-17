@@ -117,12 +117,12 @@ public class gnusbtether extends Activity{
 	private int startSLiRP(){
 		int temp = 0;
 		installSLiRP();
-		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_exe),
-			getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
-		File dir = new File(getString(R.string.slirp_root));
-		sLiRPProcess.directory(dir);
 		try{
-			sLiRPNative = sLiRPProcess.start();
+			sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_exe),
+				getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
+				File dir = new File(getString(R.string.slirp_root));
+				sLiRPProcess.directory(dir);
+			sLiRPNative = sLiRPProcess.start();			
 		}catch(IOException e){
 			temp = -1;
 			Log.e("tag", e.getMessage());			
