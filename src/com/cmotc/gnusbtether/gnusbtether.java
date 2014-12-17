@@ -117,7 +117,7 @@ public class gnusbtether extends Activity{
 	private int startSLiRP(){
 		int temp = 0;
 		installSLiRP();
-/*		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_dir),
+		sLiRPProcess = new ProcessBuilder(getString(R.string.slirp_exe),
 			getString(R.string.sppp), getString(R.string.smtu), getString(R.string.snum));
 		File dir = new File(getString(R.string.slirp_root));
 		sLiRPProcess.directory(dir);
@@ -126,24 +126,21 @@ public class gnusbtether extends Activity{
 		}catch(IOException e){
 			temp = -1;
 			Log.e("tag", e.getMessage());			
-		}*/
+		}
 		notifyIfTethered();
 		return temp;
 	}
 	/**This stops SLiRP and ?reloads firewall settings
 	*/
 	private int stopSLiRP(){
-//		sLiRPNative.destroy();
-//		int temp = sLiRPNative.exitValue();
-		int temp = 0;
+		sLiRPNative.destroy();
+		int temp = sLiRPNative.exitValue();
 		notifyIfTethered();
-		return temp;
+		return 0;
 	}
 	/**Handle the checkbox event
 	*/
-	
-	public void onToggleCheckBox(){
-//		((CheckBox) view).toggle();
+	public void onToggleCheckBox(View view){
 		tethered = ((CheckBox) view).isChecked();
 		if(tethered){
 			startSLiRP();
