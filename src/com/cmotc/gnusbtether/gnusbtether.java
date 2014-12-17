@@ -1,7 +1,11 @@
 package com.cmotc.gnusbtether;
+
 import android.app.Activity;
-import android.content.res.AssetManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
@@ -18,9 +22,12 @@ import java.io.FileInputStream;
 import java.io.FilePermission;
 
 public class gnusbtether extends Activity{
+	private static final int NOTIFICATION_ID = 10200;
 	private OutputStream sLiRPLocation;
 	private ProcessBuilder sLiRPProcess;
 	private	Process sLiRPNative;
+	private boolean tethered;
+	private NotificationManager tetheringNotification;
 	/** Called when the activity is first created. 
 	*/
 	@Override
@@ -28,6 +35,22 @@ public class gnusbtether extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		installSLiRP();
+		tethered = false;
+		tetheringNotification = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+		notifyIfTethered();
+	}
+	/**Present a notification if USB Tethering is active.
+	*/
+	private void notifyIfTethered(){
+		int temp = 0;
+		int messageId = tethered ? R.string.tethering :	R.string.not_tethering;
+		Notification notification = new Notification( tethered ? R.drawable.tethered : R.drawable.not_tethered,	getText(messageId), System.currentTimeMillis());
+		// Notification is on going event, it will not be cleared.
+		notification.flags |= Notification.FLAG_NO_CLEAR | Notification.FLAG_ONGOING_EVENT;
+		PendingIntent contentIntent = PendingIntent.getActivity(this, 0, new Intent(this, gnusbtether.class), 0);
+		notification.setLatestEventInfo((Context)this,	getText(R.string.app_name_pretty), (CharSequence)getText(messageId), contentIntent);
+		notification.icon = tethered ?	R.drawable.tethered : R.drawable.not_tethered;
+		tetheringNotification.notify(NOTIFICATION_ID, notification);
 	}
 	/**Checks if SLiRP is installed(in the data folder), if it is installed 
 	the function returns 0, if it needed to be installed it returns 1, and 
@@ -103,21 +126,24 @@ public class gnusbtether extends Activity{
 			temp = -1;
 			Log.e("tag", e.getMessage());			
 		}*/
+		notifyIfTethered();
 		return temp;
 	}
 	/**This stops SLiRP and ?reloads firewall settings
 	*/
 	private int stopSLiRP(){
-		sLiRPNative.destroy();
-		int temp = sLiRPNative.exitValue();
+//		sLiRPNative.destroy();
+//		int temp = sLiRPNative.exitValue();
+		int temp = 0;
+		notifyIfTethered();
 		return temp;
 	}
 	/**Handle the checkbox event
 	*/
 	public void onToggleCheckBox(View view){
 		((CheckBox) view).toggle();
-		boolean on = ((CheckBox) view).isChecked();
-		if(on){
+		tethered = ((CheckBox) view).isChecked();
+		if(tethered){
 			startSLiRP();
 		}else{
 			stopSLiRP();

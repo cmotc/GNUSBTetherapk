@@ -4,14 +4,10 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     >
-<TextView android:layout_width="fill_parent" 
-    android:layout_height="wrap_content" 
-    android:text="GNUSBTether"
-    />
 <CheckBox android:id="@+id/toggleGNUSBTether"
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
-    android:text="GNUSBTether"
+    android:text="Accept USB Tethering"
     android:onClick="onToggleCheckBox"
 />
 </LinearLayout>
